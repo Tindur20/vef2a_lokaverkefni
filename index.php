@@ -1,5 +1,5 @@
 <?php 	
-	include "dbcon.php";			// gagnagrunnstenging
+	include "dbcon.php";		// gagnagrunnstenging
 	include "dbqueries.php";    	// færslur
 ?>
 <!DOCTYPE html>
