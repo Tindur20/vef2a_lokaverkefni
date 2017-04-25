@@ -9,7 +9,7 @@ Function addUser($conn, $name, $email, $pass){
 }
 
 function checkUser($conn, $email, $pass){
-  	$sql = "SELECT email, password FROM users WHERE email = ? AND password = ?";
+    $sql = "SELECT email, password FROM users WHERE email = ? AND password = ?";
     $query = $conn->prepare($sql);
     $query->bindParam(1, $email);
     $query->bindParam(2, $pass);
