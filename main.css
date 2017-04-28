@@ -6,11 +6,6 @@ body {
 	flex-direction: row;
 	flex-wrap: wrap;
 }
-
-#login{
-	background-color: #ccc;
-	padding: 5px 10px;
-}
 .navigation {
     margin-left: 33px;
 }
