@@ -1,53 +1,72 @@
-<?php 
-Function addUser($conn, $name, $email, $pass){
-	$sql = "INSERT INTO users(name, email, password) VALUES (?, ?, ?)";
-	$query = $conn->prepare($sql);
-	$query->bindparam(1, $name);
-	$query->bindparam(2, $email);
-	$query->bindparam(3, $pass);
-	$query->execute();
-}
-
-function checkUser($conn, $email, $pass){
-    $sql = "SELECT email, password FROM users WHERE email = ? AND password = ?";
+<?php
+  function addUser($conn, $name, $email, $password){
+  	$sql = "INSERT INTO users(name, email, password) VALUES (?, ?, ?)";
+    $query = $conn->prepare($sql);
+    $query->bindParam(1, $name);
+    $query->bindParam(2, $email);
+    $query->bindParam(3, $password);
+    $query->execute();
+  }
+  function getUser($conn, $email, $password){
+  	$sql = "SELECT email, password FROM users WHERE email = ? AND password = ?";
     $query = $conn->prepare($sql);
     $query->bindParam(1, $email);
-    $query->bindParam(2, $pass);
+    $query->bindParam(2, $password);
+    $query->execute();
+    $results = $query->fetch();
+    return $results;
+  }
+  function checkUser($conn, $email, $password){
+  	$sql = "SELECT email, password FROM users WHERE email = ? AND password = ?";
+    $query = $conn->prepare($sql);
+    $query->bindParam(1, $email);
+    $query->bindParam(2, $password);
     $query->execute();
     $results = $query->fetch();
     return $results;
 }
-
-function startSession($email){
+  function startSess($email){
     session_unset();
     session_start();
     $_SESSION["email"] = $email;
     header('location: admin.php');
-}
-
-function getUserID($conn, $e){
-	$sql = "SELECT id FROM users WHERE email = ?";
-    $query = $conn->prepare($sql);
-    $query->bindParam(1, $e);
-    $query->execute();
-    $results = $query->fetch();
-    return $results;
-}
-
- function getUsername($conn, $email){
-    $sql = "SELECT name FROM users WHERE email = ?";
+  }
+  function getUserName($conn, $email){
+  	$sql = "SELECT name FROM users WHERE email = ?";
     $query = $conn->prepare($sql);
     $query->bindParam(1, $email);
     $query->execute();
     $results = $query->fetch();
     return $results;
   }
-
-function changeUsername($conn, $email, $name){
-    $sql = "UPDATE users SET name = ? WHERE email = ?";
+  function changeUserName($conn, $email, $name){
+  	$sql = "UPDATE users SET name = ? WHERE email = ?";
     $query =$conn->prepare($sql);
     $query->bindParam(1, $name);
     $query->bindParam(2, $email);
-  	$query->execute();
-}
-?>
+    $query->execute();
+  }
+  function getUserID($conn, $email){
+  	$sql = "SELECT id FROM users WHERE email = ?";
+    $query = $conn->prepare($sql);
+    $query->bindParam(1, $email);
+    $query->execute();
+    $results = $query->fetch();
+    return $results;
+  }
+  function getUserImages($conn, $id){
+  	$sql = "SELECT path, imageName FROM myndir WHERE userID = ?";
+    $query = $conn->prepare($sql);
+    $query->bindParam(1, $id);
+    $query->execute();
+    $results = $query->fetchAll();
+    return $results;
+  }
+ function deleteImage($conn, $id, $path){
+   $sql = "DELETE FROM myndir WHERE userID = ? AND path = ?";
+   $query = $conn->prepare($sql);
+   $query->bindParam(1, $id);
+   $query->bindParam(2, $path);
+   $query->execute();
+ }
+ ?>
