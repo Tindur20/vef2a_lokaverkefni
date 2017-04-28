@@ -5,7 +5,7 @@
 ?>
 <html>
 <head>
-	<title>Sing up</title>
+	<title>Sign up</title>
 	<?php require 'includes/head.php'; ?>
 </head>
 <body>
@@ -26,7 +26,7 @@
    ?>
   
    
-    <form method="post" action="index.php">
+    <form method="post" action="register.php">
 	     	name:
 	    	<input type="text" name="name" required>
 			Email:
