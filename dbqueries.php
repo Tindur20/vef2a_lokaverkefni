@@ -62,6 +62,12 @@
     $results = $query->fetchAll();
     return $results;
   }
+  function addImageToUser($conn, $id){
+  $sql = 'INSERT INTO myndir VALUES (:id, "myndir/mynd1.jpg", "Þetta er Mynd 1"),(:id, "myndir/mynd2.jpg", "Þetta er Mynd 2"),(:id, "myndir/mynd3.jpg", "Þetta er Mynd 3")';
+  $query = $conn->prepare($sql);
+  $query->bindParam(":id", $id);
+  $query->execute();
+  }
  function deleteImage($conn, $id, $path){
    $sql = "DELETE FROM myndir WHERE userID = ? AND path = ?";
    $query = $conn->prepare($sql);
