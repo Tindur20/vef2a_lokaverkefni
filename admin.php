@@ -4,6 +4,7 @@
 </head>
 <div class="navigation">
     <a href="logout.php">logout</a>
+    <a href="imageUpload.php">Upload images</a>
 
 <div class="container"> 
 <?php
