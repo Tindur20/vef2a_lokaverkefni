@@ -54,6 +54,8 @@
     $results = $query->fetch();
     return $results;
   }
+  //virkar ekki í augnablikinu
+  /*
   function getUserImages($conn, $id){
   	$sql = "SELECT path, imageName FROM myndir WHERE userID = ?";
     $query = $conn->prepare($sql);
@@ -74,5 +76,5 @@
    $query->bindParam(1, $id);
    $query->bindParam(2, $path);
    $query->execute();
- }
+ }*/
  ?>
