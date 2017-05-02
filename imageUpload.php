@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Lokaverkefni</title>
+	<title>Image Uploader</title>
 	<?php require 'includes/head.php'; ?>
 </head>
 <body>
