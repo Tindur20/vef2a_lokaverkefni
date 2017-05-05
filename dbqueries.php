@@ -65,7 +65,7 @@
     return $results;
   }
   function addImageToUser($conn, $id){
-  $sql = 'INSERT INTO myndir(userID, Path, imageName) VALUES (:id, "myndir/kissa_1.jpg", "Þetta er Mynd 1"),(:id, "myndir/kissa_2.jpg", "Þetta er Mynd 2"),(:id, "myndir/kissa_3.jpg", "Þetta er Mynd 3")';
+  $sql = 'INSERT INTO myndir(imageName, path, userID) VALUES ("Þetta er Mynd 1","myndir/kissa_1.jpg",:id),("Þetta er Mynd 2","myndir/kissa_2.jpg",:id),("Þetta er Mynd 3","myndir/kissa_3.jpg",:id), ("Þetta er Mynd 4","myndir/kissa_4.jpg",:id)';
   $query = $conn->prepare($sql);
   $query->bindParam(":id", $id);
   $query->execute();
