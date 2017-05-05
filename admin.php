@@ -43,8 +43,9 @@ else {
   $id = getUserID($conn, $email);
   $myndir = getUserImages($conn, $id['id']);
   foreach ($myndir as $key => $value) {
-    echo '<img src="' . $value['path'] . '" width="250" heigth="250"><br>';
-   // echo '<a href="deleteImage.php?path=' . $value['path'] . '&id=' . $id['id'] . '"> Eyða Mynd!!</a><br>';
+    echo '<img class="myndir" src="' . $value['path'] . '" width="250" heigth="250"><br>';
+    echo '<h3>'. $value['imageName'] . '</h3>';
+    print_r($value);
   }
   ?>
 
