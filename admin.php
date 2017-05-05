@@ -39,6 +39,15 @@ else {
      <input type="submit">
     </form>
 
+    <?php
+  $id = getUserID($conn, $email);
+  $myndir = getUserImages($conn, $id['id']);
+  foreach ($myndir as $key => $value) {
+    echo '<img src="' . $value['path'] . '" width="250" heigth="250"><br>';
+   // echo '<a href="deleteImage.php?path=' . $value['path'] . '&id=' . $id['id'] . '"> Eyða Mynd!!</a><br>';
+  }
+  ?>
+
 
 </div>
 </div>
