@@ -55,9 +55,9 @@
     return $results;
   }
   //virkar ekki í augnablikinu
-  /*
-  function getUserImages($conn, $id){
-  	$sql = "SELECT path, imageName FROM myndir WHERE userID = ?";
+  
+ function getUserImages($conn, $id){
+ 	$sql = "SELECT path, imageName FROM myndir WHERE userID = ?";
     $query = $conn->prepare($sql);
     $query->bindParam(1, $id);
     $query->execute();
@@ -65,11 +65,11 @@
     return $results;
   }
   function addImageToUser($conn, $id){
-  $sql = 'INSERT INTO myndir VALUES (:id, "myndir/mynd1.jpg", "Þetta er Mynd 1"),(:id, "myndir/mynd2.jpg", "Þetta er Mynd 2"),(:id, "myndir/mynd3.jpg", "Þetta er Mynd 3")';
+  $sql = 'INSERT INTO myndir(userID, Path, imageName) VALUES (:id, "myndir/kissa_1.jpg", "Þetta er Mynd 1"),(:id, "myndir/kissa_2.jpg", "Þetta er Mynd 2"),(:id, "myndir/kissa_3.jpg", "Þetta er Mynd 3")';
   $query = $conn->prepare($sql);
   $query->bindParam(":id", $id);
   $query->execute();
-  }
+  }/*
  function deleteImage($conn, $id, $path){
    $sql = "DELETE FROM myndir WHERE userID = ? AND path = ?";
    $query = $conn->prepare($sql);
