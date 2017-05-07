@@ -69,12 +69,21 @@
   $query = $conn->prepare($sql);
   $query->bindParam(":id", $id);
   $query->execute();
-  }/*
- function deleteImage($conn, $id, $path){
-   $sql = "DELETE FROM myndir WHERE userID = ? AND path = ?";
-   $query = $conn->prepare($sql);
-   $query->bindParam(1, $id);
-   $query->bindParam(2, $path);
-   $query->execute();
- }*/
+  }
+function addImage($conn, $undirtexti, $path, $userid){
+  $sql= "INSERT INTO myndir(users_id, slod, undirtexti) VALUES (?, ?, ?)";
+  $query = $conn->prepare($sql);
+  $query->bindParam(1, $userid);
+  $query->bindParam(2, $path);
+  $query->bindParam(3, $undirtexti);
+  $query->execute();
+}
+function getImages($conn, $userid, $startPosition, $maximum){
+  $sql = "SELECT * FROM myndir WHERE users_id = :id ORDER BY path";
+  $query = $conn->prepare($sql);
+  $query->bindValue(':id', $userid);
+  $query->execute();
+  $results = $query->fetchAll();
+  return $results;
+}
  ?>

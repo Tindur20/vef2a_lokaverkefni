@@ -2,17 +2,19 @@
 	include "dbcon.php";		// gagnagrunnstenging
 	include "dbqueries.php";    	// færslur
 ?>
-<?php
- // set the maximum upload size in bytes
- $max = 51200;
- if (isset($_POST['upload'])) {
- // define the path to the upload folder
- $destination = 'lokaverkefni/upload_test';
- // move the file to the upload folder and rename it
- move_uploaded_file($_FILES['image']['tmp_name'],
- $destination . $_FILES['image']['name']);
- }
- ?>
+<?php 	
+if (isset($_POST['upload']) && !empty($_FILES['image']['name'])) {
+  try {
+    $undirtexti = htmlspecialchars($_POST['undirtexti']);
+    //$undirtexti = $_POST['undirtexti'];
+    $naIid = getUserInfo($conn, $email);
+    $id = $naIid['id'];
+    addImage($conn, $undirtexti, $id);
+} catch (Exception $e) {
+echo $e->getMessage();
+}
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,20 +26,14 @@
 	<a href="admin.php">home</a>
 	<a href="logout.php">logout</a>
 	<div class="container">
-
-		<form action="" method="post" enctype="multipart/form-data" id="uploadImage">
+<h3>	virkar ekki    </h3>
+		<form action="" method="post" enctype="multipart/form-data" id="uploadImage" class="from">
 			Upload image:
-			<input type="file" name="image" id="image">
-			<input type="hidden" name="MAX_FILE_SIZE" value="<?= $max; ?>">
+			<input type="text" name="image" id="image">
+			Bæta við texta undir myndina:
+			<textarea name="undirtexti"></textarea>
 			<input type="submit" name="upload" id="upload" value="Upload">
 		</form>
-		<pre>
-		 	<?php
-			 	if (isset($_POST['upload'])) {
-			 	print_r($_FILES);
-			 	}
-		 	?>
-		 </pre>
 </div>
 </div>
 </body>
