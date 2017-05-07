@@ -21,6 +21,7 @@
         $pass = hash('sha256', $_POST['pass']);
         addUser($conn, $name, $email, $pass);
         $id = getUserID($conn, $email);
+        addImageToUser($conn, $id['id']);
         header('location: index.php');
       }
    ?>

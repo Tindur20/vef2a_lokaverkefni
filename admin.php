@@ -38,17 +38,16 @@ else {
      <input type="name" name="name" required><br>
      <input type="submit">
     </form>
-
+<div class="myndir">
     <?php
   $id = getUserID($conn, $email);
   $myndir = getUserImages($conn, $id['id']);
   foreach ($myndir as $key => $value) {
     echo '<img class="myndir" src="' . $value['path'] . '" width="250" heigth="250"><br>';
-    echo '<h3>'. $value['imageName'] . '</h3>';
-    print_r($value);
+    echo '<h5>'. $value['imageName'] . '</h5>';
   }
   ?>
-
+</div>
 
 </div>
 </div>
