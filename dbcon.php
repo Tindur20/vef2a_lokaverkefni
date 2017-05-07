@@ -1,8 +1,8 @@
 <?php  
 try {
 	$source = 'mysql:host=tsuts.tskoli.is;dbname=2811992349_skraningarform';
-	$user = '2811992349';
-	$password = 'mypassword';
+	$user = '';
+	$password = '';
 
 	# tegund og nafn á server, nafn á db og aðgangur
 	$conn = new PDO($source, $user, $password);
