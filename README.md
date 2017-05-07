@@ -1,4 +1,7 @@
 # Sigsteinn Snær
+
+ <a herf="http://tsuts.tskoli.is/2t/2811992349/vef2a/lokaverkefni/index.php">linkur á síðuna mina</a>
+ 
 Lokaverkefni í áfanganum VEF2A3U, í því myn ég fylgja leið B samkvæmt verkefnarlýsingu.
 
 Í þessu verkefni er um að geta uploadað file í database og á serverinn og byrta myndirnar en ég náði því ekki náði bara að byrta
