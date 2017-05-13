@@ -28,6 +28,7 @@ define('SHOWMAX', 6);
   // calculate the start row of the subset
   $start = $siteOn * SHOWMAX;
   $images = getImages($conn, $id, $start, SHOWMAX);
+  /*fæ vill hér utaf image er undefined index skil ekki af hverju það er*/ 
   $CurrentImage = $_GET['image'];
 ?>
 <main>
