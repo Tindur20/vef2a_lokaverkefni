@@ -3,8 +3,9 @@
     <?php require 'includes/head.php'; ?>
 </head>
 <div class="navigation">
-    <a href="logout.php">logout</a>
     <a href="imageUpload.php">Upload images</a>
+    <a href="gallery.php">Gallery</a>
+    <a href="logout.php">logout</a>
 
 <div class="container"> 
 <?php

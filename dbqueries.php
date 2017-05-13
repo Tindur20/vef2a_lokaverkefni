@@ -54,8 +54,14 @@
     $results = $query->fetch();
     return $results;
   }
-  //virkar ekki í augnablikinu
-  
+  function getAmountOfImages($conn, $userid){
+  $sql = "SELECT COUNT(*) FROM myndir WHERE userID = ?";
+  $query = $conn->prepare($sql);
+  $query->bindParam(1, $userid);
+  $query->execute();
+  $result = $query->fetch();
+  return $result;
+}
  function getUserImages($conn, $id){
  	$sql = "SELECT path, imageName FROM myndir WHERE userID = ?";
     $query = $conn->prepare($sql);
@@ -64,10 +70,41 @@
     $results = $query->fetchAll();
     return $results;
   }
+    function getImageInfo($conn, $userid, $path){
+  $sql = "SELECT * FROM myndir WHERE userID = ? AND path = ?";
+  $query = $conn->prepare($sql);
+  $query->bindParam(1, $userid);
+  $query->bindParam(2, $path);
+  $query->execute();
+  $results = $query->fetch();
+  return $results;
+}
   function addImageToUser($conn, $id){
   $sql = 'INSERT INTO myndir(imageName, path, userID) VALUES ("Þetta er Mynd 1","myndir/kissa_1.jpg",:id),("Þetta er Mynd 2","myndir/kissa_2.jpg",:id),("Þetta er Mynd 3","myndir/kissa_3.jpg",:id), ("Þetta er Mynd 4","myndir/kissa_4.jpg",:id)';
   $query = $conn->prepare($sql);
   $query->bindParam(":id", $id);
   $query->execute();
   }
+<<<<<<< HEAD
+function addImage($conn, $undirtexti, $path, $userid){
+  $sql= "INSERT INTO myndir(userID, slod, undirtexti) VALUES (?, ?, ?)";
+  $query = $conn->prepare($sql);
+  $query->bindParam(1, $userid);
+  $query->bindParam(2, $path);
+  $query->bindParam(3, $undirtexti);
+  $query->execute();
+}
+function getImages($conn, $userid, $startPosition, $maximum){
+  $sql ="SELECT * FROM myndir WHERE userID = :id ORDER BY path DESC LIMIT :start, :stop";
+   $query = $conn->prepare($sql);
+  $query->bindValue(':id', $userid);
+  $query->bindValue(':start', (int) $startPosition, PDO::PARAM_INT);
+  $query->bindValue(':stop', (int) $maximum, PDO::PARAM_INT);
+  $query->execute();
+  $results = $query->fetchAll();
+  return $results;
+}
  ?>
+=======
+ ?>
+>>>>>>> fe57cced9559591699148a4b0927a4f08c436639
